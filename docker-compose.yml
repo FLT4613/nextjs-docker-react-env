@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  app:
+    build:
+      context: .
+    container_name: app
+    env_file:
+      - .env.additional
+    environment:
+      - REACT_APP_environment_1=foo
+      - REACT_APP_environment_2=bar
+    command:
+      [
+        "node_modules/.bin/react-env",
+        "--",
+        "node_modules/.bin/next",
+        "start"
+      ]
+    ports:
+      - 3000:3000
